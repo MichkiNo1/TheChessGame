@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    android:background="@drawable/background">
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to Chess Game"
+        android:textSize="24sp"
+        android:textColor="#FFFFFFFF"
+        android:layout_marginBottom="32dp"/>
+
+    <Button
+        android:id="@+id/newGameButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_game" />
+
+    <Button
+        android:id="@+id/buttonAlarmManager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Alarm"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp" />
+    <Button
+        android:id="@+id/gameRecord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Game Records"/>
+
+    <ImageView
+        android:id="@+id/gameIconImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/game_icon"
+        android:contentDescription="@string/app_name"
+        android:layout_marginBottom="16dp"/>
+
+</LinearLayout>

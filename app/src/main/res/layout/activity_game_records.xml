@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/buttonSearchGames"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search Games"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ScrollView
+        android:id="@+id/svGameRecords"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonSearchGames"
+        android:layout_above="@id/buttonBackToOpening">
+
+        <LinearLayout
+            android:id="@+id/records_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!-- Records will be dynamically added here -->
+        </LinearLayout>
+
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+        <!-- This will be used to load fragments -->
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/buttonBackToOpening"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back to Opening"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

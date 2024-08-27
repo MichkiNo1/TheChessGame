@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Back to Opening Button -->
+    <Button
+        android:id="@+id/back_to_opening"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back to Opening"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Player One Name TextView -->
+    <TextView
+        android:id="@+id/playerOneNameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Player 1"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/back_to_opening"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/playerTwoTimerTextView"/>
+
+    <!-- Player One Timer TextView -->
+    <TextView
+        android:id="@+id/playerTwoTimerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00:30"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="@+id/playerOneNameTextView"
+        app:layout_constraintBottom_toBottomOf="@+id/playerOneNameTextView"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- ChessBoard Layout -->
+    <GridLayout
+        android:id="@+id/chessBoardLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:columnCount="8"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintTop_toBottomOf="@+id/playerOneNameTextView"
+        app:layout_constraintBottom_toTopOf="@+id/playerTwoNameTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.5"/>
+
+    <!-- Player Two Name TextView -->
+    <TextView
+        android:id="@+id/playerTwoNameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Player 2"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/chessBoardLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/playerOneTimerTextView"/>
+
+    <!-- Player Two Timer TextView -->
+    <TextView
+        android:id="@+id/playerOneTimerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00:30"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="@+id/playerTwoNameTextView"
+        app:layout_constraintBottom_toBottomOf="@+id/playerTwoNameTextView"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Undo and Redo Buttons Container -->
+    <LinearLayout
+        android:id="@+id/undo_redo_buttons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Undo Move Button -->
+        <Button
+            android:id="@+id/undo_move"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Undo Move" />
+        <Button
+            android:id="@+id/rotateBoardButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rotate Board"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

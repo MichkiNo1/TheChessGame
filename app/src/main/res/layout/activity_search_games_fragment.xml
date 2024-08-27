@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+
+
+    <Switch
+        android:id="@+id/switchMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textOff="One Player"
+        android:textOn="Two Players"
+        android:checked="false" />
+
+    <EditText
+        android:id="@+id/playerOneEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Player 1 Name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/playerTwoEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Player 2 Name"
+        android:inputType="textPersonName"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search" />
+    <Button
+        android:id="@+id/showAllGamesButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show All Games"
+        android:layout_marginTop="8dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:id="@+id/resultsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+</LinearLayout>

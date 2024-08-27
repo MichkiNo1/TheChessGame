@@ -1,0 +1,243 @@
+@startuml
+class com.example.thechessgame.Pieces.Pawn {
++ boolean isValidMove(int,int,int,int)
++ boolean isValidMove(int,int,int,int,boolean)
+}
+
+class com.example.thechessgame.Pieces.Rook {
++ boolean isValidMove(int,int,int,int)
++ boolean isValidMove(int,int,int,int,boolean)
+}
+
+class com.example.thechessgame.Pieces.Bishop {
++ boolean isValidMove(int,int,int,int)
++ boolean isValidMove(int,int,int,int,boolean)
+}
+
+class com.example.thechessgame.OpeningActivity {
+# void onCreate(Bundle)
+- void setupUI()
++ void onNewGameClicked(View)
++ void onSetAlarmClicked(View)
++ void onGameRecordClicked(View)
+}
+
+class com.example.thechessgame.Pieces.King {
++ boolean isValidMove(int,int,int,int)
++ boolean isValidMove(int,int,int,int,boolean)
+- boolean canCastle(int,int,int,int)
+}
+
+class com.example.thechessgame.MainActivity {
+- Map<Point,ChessPiece> chessBoard
+- ImageView[][] boardViews
+- Point selectedPiecePosition
+- GridLayout chessBoardLayout
+- int squareSize
+- int columnCount
+- boolean isWhiteTurn
+- Button undoMoveButton
+~ GameDatabaseHelper dbHelper
+- TextView playerOneTimerTextView
+- CountDownTimer playerOneTimer
+- boolean isPlayerOneTimerRunning
+- boolean isPlayerTwoTimerRunning
+- Button rotateBoardButton
+~ String playerOneName
+~ AlarmManager alarmManager
+- boolean isBoardRotated
+~ Deque<Move> moveHistory
+# void onCreate(Bundle)
+- void rotateBoard()
+- void initializeBoard()
+- void setupPieces()
+- void handleSquareClick(int,int)
+- void updateBoardViewRespectingRotation()
+- void highlightPossibleMoves(ChessPiece,int,int)
+- void highlightSquare(int,int,int)
+- void highlightCastlingMove(int,int)
+- boolean isCastlingPossible(King,int,int,boolean)
+- void togglePlayerTurn()
+- boolean validateAndMakeMove(Point,Point)
+- boolean isMoveLegalUnderCheck(Point,Point,boolean)
++ void handleMove(Point,Point)
+- void concludeGame(String)
+- boolean isKingInCheck(boolean)
+- Point findKingPosition(boolean)
+- boolean attemptCastle(Point,Point)
+- void updateBoardView()
+- int getDrawableIdForPiece(ChessPiece)
+- int getRotatedDrawableIdForPiece(ChessPiece)
+- void updatePieceImagesForRotation()
+- void resetHighlight()
++ boolean isCheckmate(boolean)
++ boolean isSquareOccupied(int,int)
++ boolean isPathClear(int,int,int,int)
++ boolean isSquareUnderAttack(int,int,boolean)
++ ChessPiece getChessPieceAt(int,int)
++ void makeMove(Point,Point)
++ void undoLastMove()
+- void startPlayerOneTimer()
+- void startPlayerTwoTimer()
+- String formatTime(long)
++ String getCurrentDate()
+- void navigateToGameRecords()
+- void navigateBackToOpening()
+- void insertGameRecord(String,String,String,String,String,String)
+# void onDestroy()
+# void onPause()
+- void cancelReminder()
+# void onResume()
+- void scheduleReminder()
+- boolean canScheduleExactAlarms()
+- void createNotificationChannel()
++ void onConfigurationChanged(Configuration)
+}
+
+
+class com.example.thechessgame.scheduleReminder {
+}
+class com.example.thechessgame.EnterNamesActivity {
+# void onCreate(Bundle)
+- boolean isPlayerOneWhite(RadioGroup,RadioGroup)
+}
+
+class com.example.thechessgame.ReminderBroadcast {
++ void onReceive(Context,Intent)
+}
+
+class com.example.thechessgame.AlarmManagerActivity {
+- TextView textViewDateTime
+- Calendar calendar
+- AlarmManager alarmManager
+- TextToSpeech textToSpeech
+# void onCreate(Bundle)
+# void onDestroy()
+- void chooseDateTime()
+- void updateDateTimeText()
+- void setAlarm()
+}
+
+
+class com.example.thechessgame.Pieces.Knight {
++ boolean isValidMove(int,int,int,int)
++ boolean isValidMove(int,int,int,int,boolean)
+}
+
+abstract class com.example.thechessgame.Pieces.ChessPiece {
+# boolean isWhite
+# boolean hasMoved
+# BoardStateCallback boardStateCallback
++ void setHasMoved(boolean)
++ boolean hasMoved()
++ boolean isWhite()
+# boolean isSquareOccupied(int,int)
+# boolean isPathClear(int,int,int,int)
+# boolean isSquareUnderAttack(int,int,boolean)
+# boolean isOpponentPiece(int,int)
++ {abstract}boolean isValidMove(int,int,int,int)
++ {abstract}boolean isValidMove(int,int,int,int,boolean)
+}
+
+
+class com.example.thechessgame.Move {
+~ Point from
+~ Point to
+~ ChessPiece movedPiece
+~ ChessPiece capturedPiece
+~ boolean wasFirstMove
+~ boolean wasCastlingMove
+~ Point castlingRookFrom
+~ Point castlingRookTo
++ Point getFrom()
++ Point getTo()
++ ChessPiece getMovedPiece()
++ ChessPiece getCapturedPiece()
++ boolean wasFirstMove()
++ boolean wasCastlingMove()
++ Point getCastlingRookFrom()
++ Point getCastlingRookTo()
+}
+
+
+class com.example.thechessgame.Pieces.Queen {
++ boolean isValidMove(int,int,int,int)
++ boolean isValidMove(int,int,int,int,boolean)
+}
+
+interface com.example.thechessgame.BoardStateCallback {
+~ boolean isSquareOccupied(int,int)
+~ boolean isPathClear(int,int,int,int)
+~ boolean isSquareUnderAttack(int,int,boolean)
+~ ChessPiece getChessPieceAt(int,int)
+}
+
+class com.example.thechessgame.GameDatabaseHelper {
+- {static} String DATABASE_NAME
+- {static} int DATABASE_VERSION
++ {static} String TABLE_GAMES
++ {static} String COLUMN_ID
++ {static} String COLUMN_PLAYER_ONE_NAME
++ {static} String COLUMN_PLAYER_TWO_NAME
++ {static} String COLUMN_PLAYER_ONE_COLOR
++ {static} String COLUMN_PLAYER_TWO_COLOR
++ {static} String COLUMN_START_DATE
++ {static} String COLUMN_WINNER
+- {static} String TABLE_CREATE
++ Cursor getGamesByPlayer(String)
++ void onCreate(SQLiteDatabase)
++ void onUpgrade(SQLiteDatabase,int,int)
++ Cursor getAllGames()
++ Cursor getGamesByPlayers(String,String)
+}
+
+
+class com.example.thechessgame.SearchGamesFragment {
+- EditText playerOneEditText
+- LinearLayout resultsContainer
+- Switch switchMode
+- GameDatabaseHelper dbHelper
+- Button showAllGamesButton
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+- void performSearch()
+- void loadAllGames()
+- void searchGamesByOnePlayer(String)
+- void searchGamesByTwoPlayers(String,String)
+- void displayResults(Cursor)
+- String createRecordString(Cursor)
++ void onDestroy()
+}
+
+
+class com.example.thechessgame.GameRecordsActivity {
+- GameDatabaseHelper dbHelper
+- ScrollView scrollViewRecords
+- LinearLayout recordsContainer
+- FrameLayout fragmentContainer
+# void onCreate(Bundle)
+- void openSearchFragment()
+- void loadGameRecords()
+- void navigateBackToOpening()
++ void onBackPressed()
+# void onDestroy()
+}
+
+
+
+
+com.example.thechessgame.Pieces.ChessPiece <|-- com.example.thechessgame.Pieces.Pawn
+com.example.thechessgame.Pieces.ChessPiece <|-- com.example.thechessgame.Pieces.Rook
+com.example.thechessgame.Pieces.ChessPiece <|-- com.example.thechessgame.Pieces.Bishop
+androidx.appcompat.app.AppCompatActivity <|-- com.example.thechessgame.OpeningActivity
+com.example.thechessgame.Pieces.ChessPiece <|-- com.example.thechessgame.Pieces.King
+com.example.thechessgame.BoardStateCallback <|.. com.example.thechessgame.MainActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.thechessgame.MainActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.thechessgame.EnterNamesActivity
+android.content.BroadcastReceiver <|-- com.example.thechessgame.ReminderBroadcast
+androidx.appcompat.app.AppCompatActivity <|-- com.example.thechessgame.AlarmManagerActivity
+com.example.thechessgame.Pieces.ChessPiece <|-- com.example.thechessgame.Pieces.Knight
+com.example.thechessgame.Pieces.ChessPiece <|-- com.example.thechessgame.Pieces.Queen
+android.database.sqlite.SQLiteOpenHelper <|-- com.example.thechessgame.GameDatabaseHelper
+androidx.fragment.app.Fragment <|-- com.example.thechessgame.SearchGamesFragment
+androidx.appcompat.app.AppCompatActivity <|-- com.example.thechessgame.GameRecordsActivity
+@enduml

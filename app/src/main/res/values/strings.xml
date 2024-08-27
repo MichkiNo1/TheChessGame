@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Chess Master</string>
+    <string name="new_game">New Game</string>
+    <string name="continue_game">Continue Game</string>
+    <string name="settings">Settings</string>
+    <string name="instructions">Instructions</string>
+    <string name="undo_move">Undo Move</string>
+    <string name="back_to_opening">Back</string>
+</resources>
